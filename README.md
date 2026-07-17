@@ -8,6 +8,7 @@ A kaupapa Māori leadership guide aligned to the rhythm of te marama. A discipli
 | --- | --- |
 | `index.html` | The website. A single self-contained page with no server, database, or build step. |
 | `maramataka.ics` | A static calendar covering July 2026 to October 2028, for people who prefer to subscribe rather than download. |
+| `og-image.png` | The preview card shown when the link is shared on LinkedIn, Facebook, Slack, or Messages. |
 | `CNAME` | Points GitHub Pages at the custom domain `temaramataka.nz`. |
 
 ## Hosting
