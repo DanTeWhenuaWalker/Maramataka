@@ -8,7 +8,9 @@ A kaupapa Māori leadership guide aligned to the rhythm of te marama. A discipli
 | --- | --- |
 | `index.html` | The website. A single self-contained page with no server, database, or build step. |
 | `maramataka.ics` | A static calendar covering July 2026 to October 2028, for people who prefer to subscribe rather than download. |
+| `korero.html` | He kupu whakamārama: kaitiakitanga, attribution, terms of use, and privacy. |
 | `og-image.png` | The preview card shown when the link is shared on LinkedIn, Facebook, Slack, or Messages. |
+| `LICENSE` | Non-commercial licence, matching the terms on `korero.html`. |
 | `CNAME` | Points GitHub Pages at the custom domain `temaramataka.nz`. |
 
 ## Hosting
@@ -28,4 +30,8 @@ Links inside the calendar entries are fixed to `https://temaramataka.nz/`, so th
 
 ## He kupu whakamārama
 
+Te Maramataka is held by Te Whare o Toitū AI, a subsidiary of Te Puna Ora o Mātaatua.
+
 The names are only one part of the maramataka. The real practice comes from observing the tohu in your own environment. Iwi and hapū hold their own maramataka, shaped by their whenua, moana, and mātauranga, and those regional forms take precedence in their own rohe. This calendar is offered as a guide, not a prescription.
+
+Free for non-commercial use with attribution. See [`LICENSE`](LICENSE) and https://temaramataka.nz/korero.html.
