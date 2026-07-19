@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Te Maramataka</title>
+<meta name="description" content="A kaupapa Māori leadership guide aligned to the rhythm of te marama. Thirty nights, each with its own energy. Download or subscribe for Outlook and Google Calendar.">
+
+<link rel="canonical" href="https://temaramataka.nz/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Te Maramataka">
+<meta property="og:locale" content="en_NZ">
+<meta property="og:url" content="https://temaramataka.nz/">
+<meta property="og:title" content="Te Maramataka">
+<meta property="og:description" content="A kaupapa Māori leadership guide aligned to the rhythm of te marama. A discipline for governing, building and pausing in the right season.">
+<meta property="og:image" content="https://temaramataka.nz/og-image.png">
+<meta property="og:image:secure_url" content="https://temaramataka.nz/og-image.png">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Te Maramataka. A kaupapa Māori leadership guide aligned to the rhythm of te marama.">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Te Maramataka">
+<meta name="twitter:description" content="A kaupapa Māori leadership guide aligned to the rhythm of te marama. A discipline for governing, building and pausing in the right season.">
+<meta name="twitter:image" content="https://temaramataka.nz/og-image.png">
+<meta name="theme-color" content="#070D1A">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Ccircle cx='16' cy='16' r='15' fill='%23070D1A'/%3E%3Cpath d='M16 2 A14 14 0 0 0 16 30 A9 14 0 0 1 16 2 Z' fill='%23E9E5D8'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Marcellus&family=Karla:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#070D1A;
+    --night-2:#0C1526;
+    --moon:#E9E5D8;
+    --mist:#93A4B5;
+    --gold:#C9A75A;
+    --gold-dim:#8a7440;
+    --line:rgba(147,164,181,.18);
+    --card:rgba(20,32,54,.55);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    background:
+      radial-gradient(1200px 600px at 75% -10%, #14233F 0%, transparent 60%),
+      radial-gradient(900px 500px at 10% 25%, #0E1B33 0%, transparent 55%),
+      var(--night);
+    color:var(--moon);
+    font-family:'Karla',system-ui,sans-serif;
+    font-weight:300;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  .stars{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.5;
+    background-image:
+      radial-gradient(1px 1px at 12% 18%, rgba(233,229,216,.7) 50%, transparent 51%),
+      radial-gradient(1px 1px at 34% 62%, rgba(233,229,216,.5) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 58% 30%, rgba(233,229,216,.6) 50%, transparent 51%),
+      radial-gradient(1px 1px at 71% 74%, rgba(233,229,216,.45) 50%, transparent 51%),
+      radial-gradient(1px 1px at 88% 12%, rgba(233,229,216,.6) 50%, transparent 51%),
+      radial-gradient(1.5px 1.5px at 23% 88%, rgba(233,229,216,.4) 50%, transparent 51%),
+      radial-gradient(1px 1px at 46% 8%, rgba(233,229,216,.55) 50%, transparent 51%),
+      radial-gradient(1px 1px at 93% 52%, rgba(233,229,216,.5) 50%, transparent 51%);
+  }
+  main{position:relative;z-index:1;max-width:880px;margin:0 auto;padding:0 24px}
+  h1,h2,.display{font-family:'Marcellus',serif;font-weight:400;letter-spacing:.01em}
+  .eyebrow{
+    font-size:.72rem;letter-spacing:.32em;text-transform:uppercase;color:var(--gold);
+    margin-bottom:1.1rem;font-weight:500;
+  }
+  header{padding:88px 0 40px;text-align:center}
+  h1{font-size:clamp(2rem,5.4vw,3.4rem);line-height:1.14;margin-bottom:.9rem}
+  .sub{color:var(--mist);font-size:1.06rem;max-width:34em;margin:0 auto}
+  .sub em{color:var(--moon);font-style:normal}
+
+  /* Tonight */
+  .tonight{
+    margin:56px auto 0;padding:36px 32px;border:1px solid var(--line);border-radius:14px;
+    background:var(--card);backdrop-filter:blur(6px);
+    display:grid;grid-template-columns:150px 1fr;gap:32px;align-items:center;
+  }
+  .tonight .moonwrap{display:flex;justify-content:center}
+  .tonight .moonwrap svg{filter:drop-shadow(0 0 26px rgba(233,229,216,.22))}
+  .tonight .label{font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--mist);margin-bottom:.35rem}
+  .tonight .phase{font-family:'Marcellus',serif;font-size:2rem;line-height:1.15;margin-bottom:.55rem}
+  .tonight .phase span{color:var(--gold);font-size:1rem;letter-spacing:.06em;margin-left:.6rem;white-space:nowrap}
+  .tonight .energy{color:var(--mist);margin-bottom:.7rem}
+  .tonight .discipline{border-left:2px solid var(--gold);padding-left:14px;font-size:1.02rem}
+
+  /* Month strip */
+  .strip{margin:26px 0 0;overflow-x:auto;padding:18px 4px 10px;-webkit-overflow-scrolling:touch}
+  .strip-inner{display:flex;gap:10px;min-width:max-content;padding:0 4px}
+  .night{display:flex;flex-direction:column;align-items:center;gap:7px;width:48px;flex:0 0 auto}
+  .night svg{opacity:.75}
+  .night.today svg{opacity:1}
+  .night.today .ring{outline:2px solid var(--gold);outline-offset:3px;border-radius:50%}
+  .night .d{font-size:.66rem;color:var(--mist);letter-spacing:.04em;white-space:nowrap}
+  .night.today .d{color:var(--gold);font-weight:600}
+  .strip-caption{text-align:center;color:var(--mist);font-size:.8rem;letter-spacing:.06em;margin-top:6px}
+
+  /* Download */
+  section.dl{padding:96px 0 40px}
+  .dl-card{border:1px solid var(--line);border-radius:14px;background:var(--card);padding:40px 36px;backdrop-filter:blur(6px)}
+  .dl-card h2{font-size:1.7rem;margin-bottom:.6rem}
+  .dl-card .lead{color:var(--mist);max-width:44em;margin-bottom:26px}
+  .controls{display:flex;flex-wrap:wrap;gap:16px;align-items:flex-end;margin-bottom:8px}
+  .field{display:flex;flex-direction:column;gap:6px}
+  .field label{font-size:.72rem;letter-spacing:.22em;text-transform:uppercase;color:var(--mist)}
+  select{
+    background:var(--night-2);color:var(--moon);border:1px solid var(--line);border-radius:8px;
+    padding:11px 14px;font-family:'Karla',sans-serif;font-size:.95rem;min-width:170px;
+  }
+  select:focus-visible{outline:2px solid var(--gold);outline-offset:2px}
+  button.download{
+    background:var(--gold);color:#131209;border:none;border-radius:8px;padding:13px 26px;
+    font-family:'Karla',sans-serif;font-weight:600;font-size:.98rem;letter-spacing:.02em;cursor:pointer;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  button.download:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(201,167,90,.35)}
+  button.download:focus-visible{outline:2px solid var(--moon);outline-offset:2px}
+  .dl-note{color:var(--mist);font-size:.86rem;margin-top:14px}
+
+  /* Add buttons */
+  .add-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:6px}
+  .add-btn{
+    display:flex;flex-direction:column;align-items:flex-start;gap:3px;
+    background:var(--gold);color:#131209;border:none;border-radius:10px;
+    padding:18px 22px;font-family:'Karla',sans-serif;cursor:pointer;text-align:left;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .add-btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(201,167,90,.32)}
+  .add-btn:focus-visible{outline:2px solid var(--moon);outline-offset:2px}
+  .add-btn-label{font-weight:600;font-size:1.02rem;letter-spacing:.01em}
+  .add-btn-sub{font-size:.82rem;opacity:.72}
+  .add-btn.copied{background:#7FA66A;color:#0d1408}
+  .add-btn.copied .add-btn-sub{opacity:.85}
+
+  /* Disclosure */
+  details.more{margin-top:26px;border-top:1px solid var(--line);padding-top:22px}
+  details.more summary{
+    cursor:pointer;color:var(--mist);font-size:.9rem;letter-spacing:.06em;
+    list-style:none;display:inline-flex;align-items:center;gap:8px;
+  }
+  details.more summary::-webkit-details-marker{display:none}
+  details.more summary::before{content:"+";color:var(--gold);font-size:1.1rem;line-height:1}
+  details.more[open] summary::before{content:"–"}
+  details.more summary:hover{color:var(--moon)}
+  .more-inner{margin-top:24px}
+  .copy-inline{
+    background:transparent;border:1px solid var(--line);border-radius:6px;color:var(--gold);
+    font-family:'Karla',sans-serif;font-size:.78rem;padding:4px 12px;cursor:pointer;margin-left:6px;
+    transition:border-color .15s ease,color .15s ease;
+  }
+  .copy-inline:hover{border-color:var(--gold);color:var(--moon)}
+  .copy-inline.copied{color:#9ec583;border-color:#7FA66A}
+  .howto{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
+  .howto h3{font-family:'Marcellus',serif;font-size:1.08rem;margin-bottom:.5rem;color:var(--moon)}
+  .howto p{color:var(--mist);font-size:.92rem}
+  .howto b{color:var(--moon);font-weight:500}
+  .howto .subscribe{grid-column:1 / -1;padding-top:22px;border-top:1px solid var(--line)}
+  .howto code{
+    display:inline-block;margin-top:8px;background:var(--night-2);border:1px solid var(--line);
+    border-radius:6px;padding:9px 13px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+    font-size:.84rem;color:var(--gold);word-break:break-all;
+  }
+
+  /* Nights of the month */
+  section.anga{padding:80px 0 30px}
+  .anga-head{text-align:center;margin-bottom:58px}
+  .anga-head h2{font-size:clamp(1.7rem,4vw,2.4rem);margin-bottom:.8rem}
+  .anga-head p{color:var(--mist);max-width:42em;margin:0 auto}
+  .group{padding:34px 0;border-bottom:1px solid var(--line)}
+  .group:last-child{border-bottom:none}
+  .group-head{display:grid;grid-template-columns:88px 1fr;gap:26px;align-items:start}
+  .group-head .glyph{display:flex;flex-direction:column;align-items:center;gap:10px;padding-top:4px}
+  .group-head .nights-label{font-size:.66rem;letter-spacing:.16em;text-transform:uppercase;color:var(--gold-dim);text-align:center;line-height:1.5}
+  .group-head h3{font-family:'Marcellus',serif;font-size:1.35rem;margin-bottom:.3rem}
+  .group-head .energy{color:var(--mist);font-size:.95rem;margin-bottom:.55rem}
+  .group-head .discipline{font-size:1rem;max-width:56em}
+  .night-rows{margin:18px 0 0 114px;display:flex;flex-direction:column;gap:12px}
+  .night-row{display:grid;grid-template-columns:190px 1fr;gap:14px;font-size:.92rem}
+  .night-row .nm{color:var(--moon);font-weight:500}
+  .night-row .nm span{color:var(--gold-dim);font-weight:400;font-size:.8rem;margin-left:.4em}
+  .night-row .nd{color:var(--mist)}
+  @media (max-width:720px){
+    .night-rows{margin-left:0}
+    .night-row{grid-template-columns:1fr}
+    .night-row .nd{margin-top:-6px}
+  }
+
+  footer{padding:70px 0 60px;border-top:1px solid var(--line);margin-top:70px}
+  footer p{color:var(--mist);font-size:.9rem;max-width:52em;margin-bottom:14px}
+  footer .karakia{font-family:'Marcellus',serif;color:var(--moon);font-size:1.05rem;margin-top:26px}
+
+  @media (max-width:640px){
+    header{padding:60px 0 30px}
+    .tonight{grid-template-columns:1fr;text-align:center;gap:20px;padding:30px 22px}
+    .tonight .discipline{text-align:left}
+    .howto{grid-template-columns:1fr}
+    .add-row{grid-template-columns:1fr}
+    .group-head{grid-template-columns:64px 1fr;gap:16px}
+    .controls{flex-direction:column;align-items:stretch}
+    select{width:100%}
+    button.download{width:100%}
+  }
+  @media (prefers-reduced-motion:reduce){
+    *{transition:none!important;animation:none!important}
+  }
+</style>
+</head>
+<body>
+<div class="stars" aria-hidden="true"></div>
+<main>
+
+  <header>
+    <p class="eyebrow">He maramataka · He anga kaiārahi</p>
+    <h1>Te Maramataka</h1>
+    <p class="sub">A kaupapa Māori leadership guide aligned to the rhythm of <em>te marama</em>. A discipline for governing, building and pausing in the right season.</p>
+  </header>
+
+  <div class="tonight" id="tonight">
+    <div class="moonwrap" id="tonight-moon" aria-hidden="true"></div>
+    <div>
+      <p class="label" id="tonight-date"></p>
+      <p class="phase" id="tonight-phase"></p>
+      <p class="energy" id="tonight-energy"></p>
+      <p class="discipline" id="tonight-discipline"></p>
+    </div>
+  </div>
+
+  <div class="strip" aria-label="The current lunar month">
+    <div class="strip-inner" id="strip"></div>
+  </div>
+  <p class="strip-caption" id="strip-caption"></p>
+
+  <section class="dl" id="download">
+    <div class="dl-card">
+      <p class="eyebrow">Tikiake · Download</p>
+      <h2>Carry the maramataka into your working week</h2>
+      <p class="lead">Add the maramataka to the calendar you already use. Each day arrives as an all-day entry carrying the full traditional name of the night, its broad phase and energy, a short description, suggested focus for leaders, and a link back to this site for the deeper kōrero. A morning reminder brings the guidance to you before the day begins.</p>
+
+      <div class="add-row">
+        <button class="add-btn" id="btn-google">
+          <span class="add-btn-label">Add to Google Calendar</span>
+          <span class="add-btn-sub">One tap. Stays current.</span>
+        </button>
+        <button class="add-btn" id="btn-outlook">
+          <span class="add-btn-label">Add to Outlook</span>
+          <span class="add-btn-sub" id="outlook-sub">Copy the address to subscribe.</span>
+        </button>
+      </div>
+
+      <p class="dl-note">Subscribing keeps your calendar current with any refinement to the guidance. Events are marked free, not busy, so they will never block your availability. He tohu: the calendar is a guide; the tohu of your own taiao always take precedence.</p>
+
+      <details class="more">
+        <summary>Other ways to add it</summary>
+        <div class="more-inner">
+          <div class="howto">
+            <div>
+              <h3>Subscribe by address</h3>
+              <p>To add the feed by hand, use this address. In Google Calendar, <b>Other calendars → From URL</b>. In Outlook, <b>Add calendar → Subscribe from web</b>.</p>
+              <p><code id="feed-url">https://temaramataka.nz/maramataka.ics</code> <button class="copy-inline" id="btn-copy-feed">Copy</button></p>
+            </div>
+            <div>
+              <h3>Download a fixed copy</h3>
+              <p>Prefer a one-off copy that does not stay connected to this site? Choose the length and reminder, then download and import the file. In Outlook, use <b>File → Open &amp; Export → Import/Export</b> and choose <b>Import</b> rather than opening the file directly.</p>
+              <div class="controls">
+                <div class="field">
+                  <label for="range">Length</label>
+                  <select id="range">
+                    <option value="3">3 months</option>
+                    <option value="6">6 months</option>
+                    <option value="12" selected>12 months</option>
+                    <option value="24">24 months</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="reminder">Reminder</label>
+                  <select id="reminder">
+                    <option value="7" selected>7:00 am</option>
+                    <option value="6">6:00 am</option>
+                    <option value="8">8:00 am</option>
+                    <option value="-1">None</option>
+                  </select>
+                </div>
+                <button class="download" id="btn-download">Download (.ics)</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </details>
+    </div>
+  </section>
+
+  <section class="anga" id="nga-po">
+    <div class="anga-head">
+      <p class="eyebrow">Te anga · The framework</p>
+      <h2>Ngā pō o te marama</h2>
+      <p>The sequence of nights follows the maramataka widely shared through wānanga and publications, used across Tāmaki Makaurau and the upper North Island. Each night keeps its full traditional name, because the names carry mātauranga that a collapsed label cannot. Read as a leadership rhythm, the cycle tells us when to observe, when to gather, when to act, when to celebrate, and when to rest.</p>
+    </div>
+    <div id="phases"></div>
+  </section>
+
+  <footer>
+    <p><strong style="color:var(--moon);font-weight:500">He kupu whakamārama.</strong> The names here are only one part of the maramataka. As many rangatira teach, the real practice comes from observing the tohu in your own environment: the fish, the birds, the plants, the tides, the winds. Iwi and hapū hold their own maramataka, shaped by their whenua, moana, and mātauranga, and those regional forms take precedence in their own rohe.</p>
+    <p>Dates are derived from astronomical new moon times in Aotearoa New Zealand. When a lunar month holds twenty-nine nights rather than thirty, Ōmutu rests and Mutuwhenua closes the month. This calendar is offered as a guide, not a prescription.</p>
+    <p>The maramataka is a taonga handed down through generations of careful observation. This site offers it as a leadership discipline, so that the way we lead, decide, and rest moves in rhythm with te taiao rather than against it.</p>
+    <p>Held by Te Whare o Toitū AI. <a href="/korero.html" style="color:var(--gold)">He kupu whakamārama</a>: where this comes from, how you may use it, and your privacy.</p>
+    <p class="karakia">Whāia te mātauranga hei oranga mō koutou.</p>
+  </footer>
+
+</main>
+
+<script>
+/* ── Site link used inside calendar entries ─────────────────────────────
+   When this page is hosted, entries automatically link back to it.
+   To hard-code a permanent address, set SITE_URL_OVERRIDE. */
+const SITE_URL_OVERRIDE = "https://temaramataka.nz/";
+const SITE_URL = SITE_URL_OVERRIDE ||
+  (location.protocol.startsWith("http") ? location.href.split("#")[0].split("?")[0] : "");
+
+/* ── Lunar data ─────────────────────────────────────────────────────────
+   NZ calendar dates of astronomical new moons (Pacific/Auckland),
+   computed from ephemeris data. Extend this list to extend the calendar. */
+const NEW_MOONS = [
+  "2026-06-15","2026-07-14","2026-08-13","2026-09-11","2026-10-11",
+  "2026-11-09","2026-12-09","2027-01-08","2027-02-07","2027-03-08",
+  "2027-04-07","2027-05-06","2027-06-05","2027-07-04","2027-08-02",
+  "2027-09-01","2027-09-30","2027-10-30","2027-11-28","2027-12-28",
+  "2028-01-27","2028-02-25","2028-03-26","2028-04-25","2028-05-24",
+  "2028-06-23","2028-07-22","2028-08-20","2028-09-19","2028-10-18"
+];
+
+/* ── The thirty nights ──────────────────────────────────────────────────
+   Sequence as widely shared through wānanga. Night 1 = Whiro, the night
+   after the astronomical new moon date (calibrated so 17 Jul 2026 = Hoata).
+   group: broad phase; energy: short phase label; desc: the night's
+   character; act: suggested leadership focus. */
+const NIGHTS = [
+  {n:1,  name:"Whiro", group:"Whiro",
+    energy:"Dark moon. Low energy, restraint.",
+    desc:"The darkest night of the month. A time of stillness.",
+    act:"Do not rush into decisions. Observe. Listen."},
+  {n:2,  name:"Tirea", group:"Te hokinga o te marama",
+    energy:"Waxing. Energy returning.",
+    desc:"The first sliver of light returns.",
+    act:"Clarify purpose. Revisit your values. Refine the problem you are trying to solve."},
+  {n:3,  name:"Hoata", group:"Te hokinga o te marama",
+    energy:"Waxing. Energy building.",
+    desc:"Energy starts building. Good for learning and connecting.",
+    act:"Gather people. Hold wānanga. Build relationships before building systems."},
+  {n:4,  name:"Ōuenuku", group:"Te hokinga o te marama",
+    energy:"Waxing. Momentum increasing.",
+    desc:"Momentum increases. A favourable night for beginnings.",
+    act:"Research deeply. Explore options. Challenge assumptions. Invite diverse perspectives."},
+  {n:5,  name:"Ōkoro", group:"Te hokinga o te marama",
+    energy:"Waxing. Productive.",
+    desc:"A productive day. Make decisions and take action.",
+    act:"Begin designing. Prototype carefully. Keep people at the centre of every decision."},
+  {n:6,  name:"Tamatea-ā-ngana", group:"Ngā Tamatea",
+    energy:"Tamatea. Unpredictable energy.",
+    desc:"The first of the Tamatea nights. Energy can swing quickly.",
+    act:"Test ideas in safe conditions. Hold plans loosely. Expect uncertainty."},
+  {n:7,  name:"Tamatea-ā-hotu", group:"Ngā Tamatea",
+    energy:"Tamatea. Unpredictable energy.",
+    desc:"Energy continues to fluctuate.",
+    act:"Learn quickly. Gather feedback. Avoid forcing outcomes."},
+  {n:8,  name:"Tamatea-ā-io", group:"Ngā Tamatea",
+    energy:"Tamatea. Steadier within the change.",
+    desc:"A steadier night among the Tamatea.",
+    act:"Adjust course with what you have learned, without compromising the kaupapa."},
+  {n:9,  name:"Tamatea-kai-ariki", group:"Ngā Tamatea",
+    energy:"Tamatea. Unpredictable energy.",
+    desc:"The last and most changeable of the Tamatea nights.",
+    act:"Exercise patience. Delay decisions that can wait for firmer ground."},
+  {n:10, name:"Huna", group:"Ngā pō huna",
+    energy:"Huna. Concealment, low energy.",
+    desc:"Huna means hidden. A night when things lie concealed.",
+    act:"Attend to what is unseen. Review data security, privacy, and risk. Do not launch."},
+  {n:11, name:"Ariroa", group:"Ngā pō huna",
+    energy:"Ariroa. Low energy, take care.",
+    desc:"A deceptive night. Things may not be as they first appear.",
+    act:"Verify claims. Audit assumptions. Read the fine print before committing."},
+  {n:12, name:"Māwharu", group:"Māwharu",
+    energy:"Māwharu. High, generous energy.",
+    desc:"One of the most generous and productive nights of the month.",
+    act:"Collaborate. Create. Progress substantial mahi. Share resources openly."},
+  {n:13, name:"Atua", group:"Atua",
+    energy:"Atua. A night of tapu, approach with care.",
+    desc:"A night associated with ngā atua. Move carefully.",
+    act:"Reflect on ethics. Consider consequences beyond the immediate. Seek guidance."},
+  {n:14, name:"Hotu", group:"Te pikinga ki te Rākaunui",
+    energy:"Rising toward the full moon.",
+    desc:"Energy swells ahead of the full moon.",
+    act:"Finalise preparations. Rehearse presentations. Ready the waka."},
+  {n:15, name:"Ōturu", group:"Te pikinga ki te Rākaunui",
+    energy:"Peak lunar energy.",
+    desc:"Peak energy arrives.",
+    act:"Measure what matters. Are people flourishing? Is trust increasing? Is the technology serving the kaupapa?"},
+  {n:16, name:"Rākau-nui", group:"Te Rākaunui",
+    energy:"Full moon. Abundance.",
+    desc:"The full moon. Abundance.",
+    act:"Celebrate progress. Share knowledge openly. Recognise the contributions of others. Tell stories that inspire."},
+  {n:17, name:"Rākau-matohi", group:"Te Rākaunui",
+    energy:"Peak energy continues.",
+    desc:"Strong energy carries past the full moon.",
+    act:"Consolidate learning. Document insights. Strengthen governance before expanding."},
+  {n:18, name:"Takirau", group:"Te whakaoti",
+    energy:"Productive. Completion.",
+    desc:"Good for steady, deliberate mahi.",
+    act:"Complete what has been started. Resist the temptation to chase the next idea too soon."},
+  {n:19, name:"Ōike", group:"Te whakaoti",
+    energy:"Energy moderating.",
+    desc:"The pace begins to settle.",
+    act:"Tidy loose ends. Close out the smaller tasks. Prepare for the pause ahead."},
+  {n:20, name:"Korekore-te-whiwhia", group:"Ngā Korekore",
+    energy:"Korekore. Low energy, deliberate pause.",
+    desc:"The first Korekore night. A deliberate pause.",
+    act:"Rest. Read. Review policies. Avoid pushing hard."},
+  {n:21, name:"Korekore-te-rawea", group:"Ngā Korekore",
+    energy:"Korekore. Low energy, deliberate pause.",
+    desc:"The pause deepens.",
+    act:"Reflect on ethics. Write. Strengthen the foundations quietly."},
+  {n:22, name:"Korekore-piri-ki-Tangaroa", group:"Ngā Korekore",
+    energy:"Korekore leaning toward Tangaroa.",
+    desc:"The last Korekore night, leaning toward the productive Tangaroa period.",
+    act:"Ease back in. Plan the days ahead. Prepare for action."},
+  {n:23, name:"Tangaroa-ā-mua", group:"Ngā Tangaroa",
+    energy:"Tangaroa. Strong, reliable energy.",
+    desc:"The first of the Tangaroa nights, among the most dependable of the month.",
+    act:"Present to boards. Facilitate workshops. Make strategic decisions."},
+  {n:24, name:"Tangaroa-ā-roto", group:"Ngā Tangaroa",
+    energy:"Tangaroa. Strong, reliable energy.",
+    desc:"Productive energy continues.",
+    act:"Launch pilots. Build partnerships. Seek investment."},
+  {n:25, name:"Tangaroa-kiokio", group:"Ngā Tangaroa",
+    energy:"Tangaroa. Strong, reliable energy.",
+    desc:"The final Tangaroa night.",
+    act:"Progress practical mahi. Land agreements. Deliver on commitments."},
+  {n:26, name:"Ōtāne", group:"Ngā pō whakahua",
+    energy:"Productive, favourable.",
+    desc:"A favourable, energetic night.",
+    act:"Attend to the practical foundations: data, documentation, operations, the systems that carry the kaupapa."},
+  {n:27, name:"Ōrongonui", group:"Ngā pō whakahua",
+    energy:"Among the most favourable nights.",
+    desc:"One of the most fruitful nights of the month.",
+    act:"Plant seeds for the future. Begin the things you want to grow slowly and well."},
+  {n:28, name:"Mauri", group:"Te whakamutunga",
+    energy:"Waning. Gratitude.",
+    desc:"The life force of the month draws inward.",
+    act:"Acknowledge people. Give thanks. Restore your own mauri."},
+  {n:29, name:"Ōmutu", group:"Te whakamutunga",
+    energy:"Waning. The month closes.",
+    desc:"The month closes down.",
+    act:"Finish and file. Release what is complete."},
+  {n:30, name:"Mutuwhenua", group:"Te whakamutunga",
+    energy:"Dark moon approaching.",
+    desc:"The darkest phase. The month ends.",
+    act:"Close projects well. Release what no longer serves the kaupapa. Prepare for the next cycle with gratitude and humility."}
+];
+
+const TOHU = "He tohu: the tohu of your own taiao always take precedence over the calendar.";
+
+/* ── Helpers ───────────────────────────────────────────────────────── */
+function toDate(s){ const [y,m,d]=s.split("-").map(Number); return new Date(y,m-1,d); }
+function fmtYMD(d){ return d.getFullYear().toString().padStart(4,"0")+String(d.getMonth()+1).padStart(2,"0")+String(d.getDate()).padStart(2,"0"); }
+function addDays(d,n){ const c=new Date(d); c.setDate(c.getDate()+n); return c; }
+function dayDiff(a,b){ return Math.round((a-b)/86400000); }
+
+/* Nights since the most recent new moon date (night 1 = Whiro). */
+function lunarNight(date){
+  const d0 = new Date(date.getFullYear(),date.getMonth(),date.getDate());
+  let last=null, next=null;
+  for(const s of NEW_MOONS){
+    const nm=toDate(s);
+    if(nm<=d0) last=nm; else { next=nm; break; }
+  }
+  if(!last) return null;
+  const cycleLen = next ? dayDiff(next,last) : 30;
+  return { night: dayDiff(d0,last), newMoon:last, nextNewMoon:next, cycleLen };
+}
+
+/* Map a night number to its entry.
+   In a 29-night month, Ōmutu rests: night 29 becomes Mutuwhenua. */
+function nightEntry(n, cycleLen){
+  if(n<=0) return NIGHTS[29];
+  if(cycleLen===29 && n>=29) return NIGHTS[29];
+  return NIGHTS[Math.min(n,30)-1];
+}
+
+/* Illuminated fraction for glyphs. Full at Rākau-nui (night 16). */
+function moonGeometry(n, cycleLen){
+  const L = cycleLen || 30;
+  let p = ((n - 1) / L + 0.985) % 1;  /* night 1 ≈ new, night ~16 ≈ full */
+  return p;
+}
+
+/* Southern-hemisphere moon glyph: waxing lights the left limb. */
+function moonSVG(p, size){
+  const r = size/2 - 1.5, cx = size/2, cy = size/2;
+  const lit = "#E9E5D8", dark = "#1B2A44", stroke = "rgba(233,229,216,.35)";
+  const cos = Math.cos(2*Math.PI*p);
+  const rx = Math.abs(cos)*r;
+  let inner;
+  if(p < 0.035 || p > 0.965){
+    inner = "";
+  } else if(Math.abs(p-0.5) < 0.03){
+    inner = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${lit}"/>`;
+  } else {
+    const waxing = p < 0.5;
+    const sweepEdge = waxing ? 0 : 1;
+    const crescent = (waxing ? p < 0.25 : p > 0.75);
+    const sweepTerm = crescent ? sweepEdge : (1 - sweepEdge);
+    inner = `<path d="M ${cx} ${cy-r} A ${r} ${r} 0 0 ${sweepEdge} ${cx} ${cy+r} A ${rx} ${r} 0 0 ${sweepTerm} ${cx} ${cy-r} Z" fill="${lit}"/>`;
+  }
+  return `<svg width="${size}" height="${size}" viewBox="0 0 ${size} ${size}" role="img">
+    <circle cx="${cx}" cy="${cy}" r="${r}" fill="${dark}" stroke="${stroke}" stroke-width="1"/>${inner}</svg>`;
+}
+
+/* ── Tonight panel ─────────────────────────────────────────────────── */
+function renderTonight(){
+  const now = new Date();
+  const ln = lunarNight(now);
+  if(!ln) return;
+  const entry = nightEntry(ln.night, ln.cycleLen);
+  const p = moonGeometry(ln.night, ln.cycleLen);
+
+  document.getElementById("tonight-moon").innerHTML = moonSVG(p, 132);
+  document.getElementById("tonight-date").textContent =
+    "Tonight · " + now.toLocaleDateString("en-NZ",{weekday:"long", day:"numeric", month:"long", year:"numeric"});
+  document.getElementById("tonight-phase").innerHTML =
+    entry.name + `<span>Night ${ln.night} of ${ln.cycleLen}</span>`;
+  document.getElementById("tonight-energy").textContent = entry.energy + " " + entry.desc;
+  document.getElementById("tonight-discipline").textContent = entry.act;
+}
+
+/* ── Month strip ───────────────────────────────────────────────────── */
+function renderStrip(){
+  const now = new Date();
+  const today = new Date(now.getFullYear(),now.getMonth(),now.getDate());
+  const ln = lunarNight(today);
+  if(!ln) return;
+  const start = addDays(ln.newMoon,1);
+  const end = ln.nextNewMoon ? addDays(ln.nextNewMoon,1) : addDays(ln.newMoon,31);
+  const strip = document.getElementById("strip");
+  let html = "";
+  for(let d=new Date(start); d<end; d=addDays(d,1)){
+    const n = dayDiff(d, ln.newMoon);
+    const entry = nightEntry(n, ln.cycleLen);
+    const p = moonGeometry(n, ln.cycleLen);
+    const isToday = dayDiff(d,today)===0;
+    html += `<div class="night${isToday?" today":""}" title="${entry.name} · ${d.toLocaleDateString("en-NZ",{day:"numeric",month:"short"})}">
+      <span class="ring">${moonSVG(p,30)}</span>
+      <span class="d">${d.getDate()} ${d.toLocaleDateString("en-NZ",{month:"short"})}</span>
+    </div>`;
+  }
+  strip.innerHTML = html;
+  document.getElementById("strip-caption").textContent =
+    "The current lunar month · " + addDays(ln.newMoon,1).toLocaleDateString("en-NZ",{day:"numeric",month:"long"}) +
+    " to " + (ln.nextNewMoon? ln.nextNewMoon : addDays(ln.newMoon,30)).toLocaleDateString("en-NZ",{day:"numeric",month:"long"});
+  const t = strip.querySelector(".today");
+  if(t) t.scrollIntoView({inline:"center", block:"nearest"});
+}
+
+/* ── Nights list, grouped by broad phase ───────────────────────────── */
+function renderPhases(){
+  const el = document.getElementById("phases");
+  const groups = [];
+  for(const nt of NIGHTS){
+    const g = groups[groups.length-1];
+    if(g && g.group===nt.group) g.nights.push(nt);
+    else groups.push({group:nt.group, nights:[nt]});
+  }
+  el.innerHTML = groups.map(g=>{
+    const first=g.nights[0], last=g.nights[g.nights.length-1];
+    const mid=(first.n+last.n)/2;
+    const p=moonGeometry(mid,30);
+    const label = first.n===last.n ? "Night "+first.n : "Nights "+first.n+" – "+last.n;
+    const rows = g.nights.map(nt=>
+      `<div class="night-row"><span class="nm">${nt.name}<span>Night ${nt.n}</span></span><span class="nd">${nt.desc} ${nt.act}</span></div>`
+    ).join("");
+    return `<div class="group">
+      <div class="group-head">
+        <div class="glyph">${moonSVG(p,52)}<span class="nights-label">${label}</span></div>
+        <div>
+          <h3>${g.group}</h3>
+          <p class="energy">${first.energy}</p>
+        </div>
+      </div>
+      <div class="night-rows">${rows}</div>
+    </div>`;
+  }).join("");
+}
+
+/* ── ICS generation ────────────────────────────────────────────────── */
+function foldLine(line){
+  const enc = new TextEncoder();
+  if(enc.encode(line).length<=75) return line;
+  let out="", cur="", len=0;
+  for(const ch of line){
+    const l = enc.encode(ch).length;
+    if(len+l>74){ out += cur+"\r\n "; cur=""; len=1; }
+    cur+=ch; len+=l;
+  }
+  return out+cur;
+}
+function escICS(s){ return s.replace(/\\/g,"\\\\").replace(/;/g,"\\;").replace(/,/g,"\\,").replace(/\n/g,"\\n"); }
+
+function moonEmoji(p){
+  if(p<0.035||p>0.965) return "🌑";
+  if(p<0.22) return "🌒"; if(p<0.28) return "🌓"; if(p<0.47) return "🌔";
+  if(p<0.53) return "🌕"; if(p<0.72) return "🌖"; if(p<0.78) return "🌗";
+  return "🌘";
+}
+
+function buildICS(months, reminderHour){
+  const today = new Date(); today.setHours(0,0,0,0);
+  const endDate = new Date(today); endDate.setMonth(endDate.getMonth()+months);
+  const lastCovered = toDate(NEW_MOONS[NEW_MOONS.length-1]);
+  const stop = endDate < lastCovered ? endDate : lastCovered;
+  const stamp = new Date().toISOString().replace(/[-:]/g,"").replace(/\.\d+Z/,"Z");
+
+  let lines = [
+    "BEGIN:VCALENDAR","VERSION:2.0",
+    "PRODID:-//Te Maramataka//NZ//EN",
+    "CALSCALE:GREGORIAN","METHOD:PUBLISH",
+    "X-WR-CALNAME:Te Maramataka",
+    "X-WR-TIMEZONE:Pacific/Auckland",
+    "X-WR-CALDESC:"+escICS("A kaupapa Māori leadership guide aligned to the rhythm of te marama.")
+  ];
+
+  for(let d=new Date(today); d<stop; d=addDays(d,1)){
+    const ln = lunarNight(d);
+    if(!ln || ln.night<1) continue;
+    const entry = nightEntry(ln.night, ln.cycleLen);
+    const p = moonGeometry(ln.night, ln.cycleLen);
+    const desc =
+      entry.name + " · Night " + ln.night + " of the maramataka\n" +
+      "Phase: " + entry.energy + "\n\n" +
+      entry.desc + "\n\n" +
+      "Suggested focus: " + entry.act + "\n\n" +
+      TOHU +
+      (SITE_URL ? "\n\nTe kōrero hōhonu ake · The deeper detail: " + SITE_URL : "");
+    lines.push(
+      "BEGIN:VEVENT",
+      "UID:maramataka-"+fmtYMD(d)+"@kaiarahi-ai",
+      "DTSTAMP:"+stamp,
+      "DTSTART;VALUE=DATE:"+fmtYMD(d),
+      "DTEND;VALUE=DATE:"+fmtYMD(addDays(d,1)),
+      "SUMMARY:"+escICS(moonEmoji(p)+" "+entry.name),
+      "DESCRIPTION:"+escICS(desc),
+      "CATEGORIES:Maramataka",
+      "TRANSP:TRANSPARENT"
+    );
+    if(SITE_URL) lines.push("URL:"+SITE_URL);
+    if(reminderHour>=0){
+      lines.push(
+        "BEGIN:VALARM",
+        "ACTION:DISPLAY",
+        "DESCRIPTION:"+escICS(entry.name+" · "+entry.energy),
+        "TRIGGER;RELATED=START:PT"+reminderHour+"H",
+        "END:VALARM"
+      );
+    }
+    lines.push("END:VEVENT");
+  }
+  lines.push("END:VCALENDAR");
+  return lines.map(foldLine).join("\r\n");
+}
+
+/* ── Feed address ───────────────────────────────────────────────────── */
+const FEED_URL = (function(){
+  if(SITE_URL){
+    return SITE_URL.replace(/[^/]*$/, "") + "maramataka.ics";
+  }
+  return "https://temaramataka.nz/maramataka.ics";
+})();
+
+/* ── Add to Google Calendar (one tap) ───────────────────────────────── */
+document.getElementById("btn-google").addEventListener("click",()=>{
+  /* Google opens the add-by-URL dialog with the webcal/https feed prefilled. */
+  const feed = FEED_URL.replace(/^https:\/\//,"webcal://");
+  const url = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(feed);
+  window.open(url, "_blank", "noopener");
+});
+
+/* ── Add to Outlook (copy the address) ──────────────────────────────── */
+async function copyText(text){
+  try{
+    await navigator.clipboard.writeText(text);
+    return true;
+  }catch(e){
+    const ta=document.createElement("textarea");
+    ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    let ok=false; try{ ok=document.execCommand("copy"); }catch(_){}
+    ta.remove(); return ok;
+  }
+}
+
+document.getElementById("btn-outlook").addEventListener("click", async ()=>{
+  const btn = document.getElementById("btn-outlook");
+  const sub = document.getElementById("outlook-sub");
+  const ok = await copyText(FEED_URL);
+  if(ok){
+    btn.classList.add("copied");
+    sub.textContent = "Address copied. In Outlook: Add calendar → Subscribe from web → paste.";
+    setTimeout(()=>{
+      btn.classList.remove("copied");
+      sub.textContent = "Copy the address to subscribe.";
+    }, 6000);
+  } else {
+    sub.textContent = "Copy this: " + FEED_URL;
+  }
+  /* Open Outlook's add-calendar screen in a new tab to meet them halfway. */
+  window.open("https://outlook.live.com/calendar/0/addcalendar", "_blank", "noopener");
+});
+
+/* ── Copy feed (inside the disclosure) ──────────────────────────────── */
+document.getElementById("btn-copy-feed").addEventListener("click", async (e)=>{
+  const ok = await copyText(FEED_URL);
+  if(ok){
+    e.target.textContent = "Copied";
+    e.target.classList.add("copied");
+    setTimeout(()=>{ e.target.textContent="Copy"; e.target.classList.remove("copied"); }, 2500);
+  }
+});
+
+/* ── Download a fixed copy ──────────────────────────────────────────── */
+document.getElementById("btn-download").addEventListener("click",()=>{
+  const months = parseInt(document.getElementById("range").value,10);
+  const rem = parseInt(document.getElementById("reminder").value,10);
+  const ics = buildICS(months, rem);
+  const blob = new Blob([ics],{type:"text/calendar;charset=utf-8"});
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "te-maramataka.ics";
+  document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();},400);
+});
+
+function renderFeedUrl(){
+  const el = document.getElementById("feed-url");
+  if(el) el.textContent = FEED_URL;
+}
+
+renderTonight();
+renderStrip();
+renderPhases();
+renderFeedUrl();
+</script>
+</body>
+</html>
