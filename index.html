@@ -120,6 +120,40 @@
   button.download:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(201,167,90,.35)}
   button.download:focus-visible{outline:2px solid var(--moon);outline-offset:2px}
   .dl-note{color:var(--mist);font-size:.86rem;margin-top:14px}
+
+  /* Add buttons */
+  .add-row{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:6px}
+  .add-btn{
+    display:flex;flex-direction:column;align-items:flex-start;gap:3px;
+    background:var(--gold);color:#131209;border:none;border-radius:10px;
+    padding:18px 22px;font-family:'Karla',sans-serif;cursor:pointer;text-align:left;
+    transition:transform .15s ease, box-shadow .15s ease;
+  }
+  .add-btn:hover{transform:translateY(-1px);box-shadow:0 6px 22px rgba(201,167,90,.32)}
+  .add-btn:focus-visible{outline:2px solid var(--moon);outline-offset:2px}
+  .add-btn-label{font-weight:600;font-size:1.02rem;letter-spacing:.01em}
+  .add-btn-sub{font-size:.82rem;opacity:.72}
+  .add-btn.copied{background:#7FA66A;color:#0d1408}
+  .add-btn.copied .add-btn-sub{opacity:.85}
+
+  /* Disclosure */
+  details.more{margin-top:26px;border-top:1px solid var(--line);padding-top:22px}
+  details.more summary{
+    cursor:pointer;color:var(--mist);font-size:.9rem;letter-spacing:.06em;
+    list-style:none;display:inline-flex;align-items:center;gap:8px;
+  }
+  details.more summary::-webkit-details-marker{display:none}
+  details.more summary::before{content:"+";color:var(--gold);font-size:1.1rem;line-height:1}
+  details.more[open] summary::before{content:"–"}
+  details.more summary:hover{color:var(--moon)}
+  .more-inner{margin-top:24px}
+  .copy-inline{
+    background:transparent;border:1px solid var(--line);border-radius:6px;color:var(--gold);
+    font-family:'Karla',sans-serif;font-size:.78rem;padding:4px 12px;cursor:pointer;margin-left:6px;
+    transition:border-color .15s ease,color .15s ease;
+  }
+  .copy-inline:hover{border-color:var(--gold);color:var(--moon)}
+  .copy-inline.copied{color:#9ec583;border-color:#7FA66A}
   .howto{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:34px;padding-top:30px;border-top:1px solid var(--line)}
   .howto h3{font-family:'Marcellus',serif;font-size:1.08rem;margin-bottom:.5rem;color:var(--moon)}
   .howto p{color:var(--mist);font-size:.92rem}
@@ -164,6 +198,7 @@
     .tonight{grid-template-columns:1fr;text-align:center;gap:20px;padding:30px 22px}
     .tonight .discipline{text-align:left}
     .howto{grid-template-columns:1fr}
+    .add-row{grid-template-columns:1fr}
     .group-head{grid-template-columns:64px 1fr;gap:16px}
     .controls{flex-direction:column;align-items:stretch}
     select{width:100%}
@@ -203,44 +238,58 @@
     <div class="dl-card">
       <p class="eyebrow">Tikiake · Download</p>
       <h2>Carry the maramataka into your working week</h2>
-      <p class="lead">Download the calendar file and import it into Outlook or Google Calendar. Each day arrives as an all-day entry carrying the full traditional name of the night, its broad phase and energy, a short description, suggested focus for leaders, and a link back to this site for the deeper kōrero. A morning reminder brings the guidance to you before the day begins.</p>
-      <div class="controls">
-        <div class="field">
-          <label for="range">Calendar length</label>
-          <select id="range">
-            <option value="3">3 months</option>
-            <option value="6">6 months</option>
-            <option value="12" selected>12 months</option>
-            <option value="24">24 months</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="reminder">Morning reminder</label>
-          <select id="reminder">
-            <option value="7" selected>7:00 am</option>
-            <option value="6">6:00 am</option>
-            <option value="8">8:00 am</option>
-            <option value="-1">No reminder</option>
-          </select>
-        </div>
-        <button class="download" id="btn-download">Download calendar (.ics)</button>
+      <p class="lead">Add the maramataka to the calendar you already use. Each day arrives as an all-day entry carrying the full traditional name of the night, its broad phase and energy, a short description, suggested focus for leaders, and a link back to this site for the deeper kōrero. A morning reminder brings the guidance to you before the day begins.</p>
+
+      <div class="add-row">
+        <button class="add-btn" id="btn-google">
+          <span class="add-btn-label">Add to Google Calendar</span>
+          <span class="add-btn-sub">One tap. Stays current.</span>
+        </button>
+        <button class="add-btn" id="btn-outlook">
+          <span class="add-btn-label">Add to Outlook</span>
+          <span class="add-btn-sub" id="outlook-sub">Copy the address to subscribe.</span>
+        </button>
       </div>
-      <p class="dl-note">The file is generated on this page from astronomical new moon times for Aotearoa. Events are marked free, not busy, so they will never block your availability. He tohu: the calendar is a guide; the tohu of your own taiao always take precedence.</p>
-      <div class="howto">
-        <div>
-          <h3>Google Calendar</h3>
-          <p>Open Google Calendar on the web, then <b>Settings → Import &amp; export → Import</b>. Choose the downloaded file and select the calendar to add it to. Creating a dedicated calendar named <b>Maramataka</b> first keeps it tidy and lets others in your organisation subscribe to it.</p>
+
+      <p class="dl-note">Subscribing keeps your calendar current with any refinement to the guidance. Events are marked free, not busy, so they will never block your availability. He tohu: the calendar is a guide; the tohu of your own taiao always take precedence.</p>
+
+      <details class="more">
+        <summary>Other ways to add it</summary>
+        <div class="more-inner">
+          <div class="howto">
+            <div>
+              <h3>Subscribe by address</h3>
+              <p>To add the feed by hand, use this address. In Google Calendar, <b>Other calendars → From URL</b>. In Outlook, <b>Add calendar → Subscribe from web</b>.</p>
+              <p><code id="feed-url">https://temaramataka.nz/maramataka.ics</code> <button class="copy-inline" id="btn-copy-feed">Copy</button></p>
+            </div>
+            <div>
+              <h3>Download a fixed copy</h3>
+              <p>Prefer a one-off copy that does not stay connected to this site? Choose the length and reminder, then download and import the file. In Outlook, use <b>File → Open &amp; Export → Import/Export</b> and choose <b>Import</b> rather than opening the file directly.</p>
+              <div class="controls">
+                <div class="field">
+                  <label for="range">Length</label>
+                  <select id="range">
+                    <option value="3">3 months</option>
+                    <option value="6">6 months</option>
+                    <option value="12" selected>12 months</option>
+                    <option value="24">24 months</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="reminder">Reminder</label>
+                  <select id="reminder">
+                    <option value="7" selected>7:00 am</option>
+                    <option value="6">6:00 am</option>
+                    <option value="8">8:00 am</option>
+                    <option value="-1">None</option>
+                  </select>
+                </div>
+                <button class="download" id="btn-download">Download (.ics)</button>
+              </div>
+            </div>
+          </div>
         </div>
-        <div>
-          <h3>Outlook</h3>
-          <p>In Outlook on the web, go to <b>Calendar → Add calendar → Upload from file</b>, choose the file, and select a calendar. In the desktop app, <b>File → Open &amp; Export → Import/Export → Import an iCalendar (.ics) file</b>, then choose <b>Import</b> to merge it into your calendar.</p>
-        </div>
-        <div class="subscribe">
-          <h3>Ohia atu · Subscribe instead</h3>
-          <p>Rather than importing a fixed copy, you can subscribe to the calendar so it stays current. In Google Calendar use <b>Other calendars → From URL</b>; in Outlook use <b>Add calendar → Subscribe from web</b>. Paste this address:</p>
-          <p><code id="feed-url">maramataka.ics</code></p>
-        </div>
-      </div>
+      </details>
     </div>
   </section>
 
@@ -256,7 +305,7 @@
   <footer>
     <p><strong style="color:var(--moon);font-weight:500">He kupu whakamārama.</strong> The names here are only one part of the maramataka. As many rangatira teach, the real practice comes from observing the tohu in your own environment: the fish, the birds, the plants, the tides, the winds. Iwi and hapū hold their own maramataka, shaped by their whenua, moana, and mātauranga, and those regional forms take precedence in their own rohe.</p>
     <p>Dates are derived from astronomical new moon times in Aotearoa New Zealand. When a lunar month holds twenty-nine nights rather than thirty, Ōmutu rests and Mutuwhenua closes the month. This calendar is offered as a guide, not a prescription.</p>
-    <p>The maramataka is a taonga handed down through generations of careful observation. This site reframes it as a leadership discipline for those governing and building AI, so that innovation moves in rhythm with tikanga rather than against it.</p>
+    <p>The maramataka is a taonga handed down through generations of careful observation. This site offers it as a leadership discipline, so that the way we lead, decide, and rest moves in rhythm with te taiao rather than against it.</p>
     <p>Held by Te Whare o Toitū AI. <a href="/korero.html" style="color:var(--gold)">He kupu whakamārama</a>: where this comes from, how you may use it, and your privacy.</p>
     <p class="karakia">Whāia te mātauranga hei oranga mō koutou.</p>
   </footer>
@@ -328,7 +377,7 @@ const NIGHTS = [
   {n:10, name:"Huna", group:"Ngā pō huna",
     energy:"Huna. Concealment, low energy.",
     desc:"Huna means hidden. A night when things lie concealed.",
-    act:"Attend to what is unseen. Review data security, privacy, and risk. Do not launch."},
+    act:"Attend to what is unseen. Review your security, privacy and risk. Do not launch."},
   {n:11, name:"Ariroa", group:"Ngā pō huna",
     energy:"Ariroa. Low energy, take care.",
     desc:"A deceptive night. Things may not be as they first appear.",
@@ -348,7 +397,7 @@ const NIGHTS = [
   {n:15, name:"Ōturu", group:"Te pikinga ki te Rākaunui",
     energy:"Peak lunar energy.",
     desc:"Peak energy arrives.",
-    act:"Measure what matters. Are people flourishing? Is trust increasing? Is the technology serving the kaupapa?"},
+    act:"Measure what matters. Are people flourishing? Is trust increasing? Are you serving the kaupapa?"},
   {n:16, name:"Rākau-nui", group:"Te Rākaunui",
     energy:"Full moon. Abundance.",
     desc:"The full moon. Abundance.",
@@ -440,6 +489,25 @@ function nightEntry(n, cycleLen){
   return NIGHTS[Math.min(n,30)-1];
 }
 
+/* Resolve one calendar day to its night, handling Mutuwhenua correctly.
+   The new-moon day itself (night 0) is Mutuwhenua, the dark of the moon
+   that closes the cycle just ended. Its number is that cycle's length
+   (30, or 29 where Ōmutu rested). Every other day numbers from Whiro. */
+function resolveNight(date){
+  const ln = lunarNight(date);
+  if(!ln) return null;
+  if(ln.night === 0){
+    let prev = null;
+    for(const s of NEW_MOONS){
+      const nm = toDate(s);
+      if(nm < ln.newMoon) prev = nm; else break;
+    }
+    const prevLen = prev ? dayDiff(ln.newMoon, prev) : 30;
+    return { entry: NIGHTS[29], displayNight: prevLen, cycleLen: prevLen };
+  }
+  return { entry: nightEntry(ln.night, ln.cycleLen), displayNight: ln.night, cycleLen: ln.cycleLen };
+}
+
 /* Illuminated fraction for glyphs. Full at Rākau-nui (night 16). */
 function moonGeometry(n, cycleLen){
   const L = cycleLen || 30;
@@ -472,16 +540,16 @@ function moonSVG(p, size){
 /* ── Tonight panel ─────────────────────────────────────────────────── */
 function renderTonight(){
   const now = new Date();
-  const ln = lunarNight(now);
-  if(!ln) return;
-  const entry = nightEntry(ln.night, ln.cycleLen);
-  const p = moonGeometry(ln.night, ln.cycleLen);
+  const r = resolveNight(now);
+  if(!r) return;
+  const entry = r.entry;
+  const p = moonGeometry(r.displayNight, r.cycleLen);
 
   document.getElementById("tonight-moon").innerHTML = moonSVG(p, 132);
   document.getElementById("tonight-date").textContent =
     "Tonight · " + now.toLocaleDateString("en-NZ",{weekday:"long", day:"numeric", month:"long", year:"numeric"});
   document.getElementById("tonight-phase").innerHTML =
-    entry.name + `<span>Night ${ln.night} of ${ln.cycleLen}</span>`;
+    entry.name + `<span>Night ${r.displayNight} of ${r.cycleLen}</span>`;
   document.getElementById("tonight-energy").textContent = entry.energy + " " + entry.desc;
   document.getElementById("tonight-discipline").textContent = entry.act;
 }
@@ -574,7 +642,7 @@ function buildICS(months, reminderHour){
 
   let lines = [
     "BEGIN:VCALENDAR","VERSION:2.0",
-    "PRODID:-//Te Maramataka mo te Kaiarahi AI//NZ//EN",
+    "PRODID:-//Te Maramataka//NZ//EN",
     "CALSCALE:GREGORIAN","METHOD:PUBLISH",
     "X-WR-CALNAME:Te Maramataka",
     "X-WR-TIMEZONE:Pacific/Auckland",
@@ -582,12 +650,12 @@ function buildICS(months, reminderHour){
   ];
 
   for(let d=new Date(today); d<stop; d=addDays(d,1)){
-    const ln = lunarNight(d);
-    if(!ln || ln.night<1) continue;
-    const entry = nightEntry(ln.night, ln.cycleLen);
-    const p = moonGeometry(ln.night, ln.cycleLen);
+    const r = resolveNight(d);
+    if(!r) continue;
+    const entry = r.entry;
+    const p = moonGeometry(r.displayNight, r.cycleLen);
     const desc =
-      entry.name + " · Night " + ln.night + " of the maramataka\n" +
+      entry.name + " · Night " + r.displayNight + " of the maramataka\n" +
       "Phase: " + entry.energy + "\n\n" +
       entry.desc + "\n\n" +
       "Suggested focus: " + entry.act + "\n\n" +
@@ -620,6 +688,65 @@ function buildICS(months, reminderHour){
   return lines.map(foldLine).join("\r\n");
 }
 
+/* ── Feed address ───────────────────────────────────────────────────── */
+const FEED_URL = (function(){
+  if(SITE_URL){
+    return SITE_URL.replace(/[^/]*$/, "") + "maramataka.ics";
+  }
+  return "https://temaramataka.nz/maramataka.ics";
+})();
+
+/* ── Add to Google Calendar (one tap) ───────────────────────────────── */
+document.getElementById("btn-google").addEventListener("click",()=>{
+  /* Google opens the add-by-URL dialog with the webcal/https feed prefilled. */
+  const feed = FEED_URL.replace(/^https:\/\//,"webcal://");
+  const url = "https://calendar.google.com/calendar/r?cid=" + encodeURIComponent(feed);
+  window.open(url, "_blank", "noopener");
+});
+
+/* ── Add to Outlook (copy the address) ──────────────────────────────── */
+async function copyText(text){
+  try{
+    await navigator.clipboard.writeText(text);
+    return true;
+  }catch(e){
+    const ta=document.createElement("textarea");
+    ta.value=text; ta.style.position="fixed"; ta.style.opacity="0";
+    document.body.appendChild(ta); ta.select();
+    let ok=false; try{ ok=document.execCommand("copy"); }catch(_){}
+    ta.remove(); return ok;
+  }
+}
+
+document.getElementById("btn-outlook").addEventListener("click", async ()=>{
+  const btn = document.getElementById("btn-outlook");
+  const sub = document.getElementById("outlook-sub");
+  const ok = await copyText(FEED_URL);
+  if(ok){
+    btn.classList.add("copied");
+    sub.textContent = "Address copied. In Outlook: Add calendar → Subscribe from web → paste.";
+    setTimeout(()=>{
+      btn.classList.remove("copied");
+      sub.textContent = "Copy the address to subscribe.";
+    }, 6000);
+  } else {
+    sub.textContent = "Copy this: " + FEED_URL;
+  }
+  /* Open Outlook's add-calendar screen in a new tab to meet them halfway. */
+  window.open("https://outlook.live.com/calendar/0/addcalendar", "_blank", "noopener");
+});
+
+/* ── Copy feed (inside the disclosure) ──────────────────────────────── */
+document.getElementById("btn-copy-feed").addEventListener("click", async (e)=>{
+  const ok = await copyText(FEED_URL);
+  if(ok){
+    e.target.textContent = "Copied";
+    e.target.classList.add("copied");
+    setTimeout(()=>{ e.target.textContent="Copy"; e.target.classList.remove("copied"); }, 2500);
+  }
+});
+
+/* ── Download a fixed copy ──────────────────────────────────────────── */
 document.getElementById("btn-download").addEventListener("click",()=>{
   const months = parseInt(document.getElementById("range").value,10);
   const rem = parseInt(document.getElementById("reminder").value,10);
@@ -627,20 +754,14 @@ document.getElementById("btn-download").addEventListener("click",()=>{
   const blob = new Blob([ics],{type:"text/calendar;charset=utf-8"});
   const a = document.createElement("a");
   a.href = URL.createObjectURL(blob);
-  a.download = "te-maramataka-mo-te-kaiarahi-ai.ics";
+  a.download = "te-maramataka.ics";
   document.body.appendChild(a); a.click();
   setTimeout(()=>{URL.revokeObjectURL(a.href); a.remove();},400);
 });
 
 function renderFeedUrl(){
   const el = document.getElementById("feed-url");
-  if(!el) return;
-  if(SITE_URL){
-    const base = SITE_URL.replace(/[^/]*$/, "");
-    el.textContent = base + "maramataka.ics";
-  } else {
-    el.textContent = "Available once this page is hosted.";
-  }
+  if(el) el.textContent = FEED_URL;
 }
 
 renderTonight();
